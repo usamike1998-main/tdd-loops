@@ -12,6 +12,16 @@
  */
 export function echo(word, n) {
   // TODO
+  if (typeof word !== "string" || !Number.isInteger(n) || n < 0) {
+    return "";
+  } else if (word.length === 0 || n === 0) {
+    return "";
+  }
+  let phrase = "";
+  for (let i = 0; i < n; i++) {
+    phrase += word;
+  }
+  return phrase;
 }
 
 /**
@@ -28,6 +38,16 @@ export function echo(word, n) {
  */
 export function echoWithSpace(word, n) {
   // TODO
+  if (typeof word !== "string" || !Number.isInteger(n) || n < 0) {
+    return "";
+  } else if (word.length === 0 || n === 0) {
+    return "";
+  }
+  let phrase = word;
+  for (let i = 0; i < n - 1; i++) {
+    phrase += ` ${word}`;
+  }
+  return phrase;
 }
 
 /**
@@ -43,6 +63,15 @@ export function echoWithSpace(word, n) {
  */
 export function sumTo(n) {
   // TODO
+
+  let integerSum = 0;
+  if (n <= 0 || typeof n !== "number") {
+    return 0;
+  }
+  for (let i = 0; i <= n; i++) {
+    integerSum += i;
+  }
+  return integerSum;
 }
 
 /**
@@ -58,7 +87,15 @@ export function sumTo(n) {
  * sumFromTo(2, 2); // 2
  */
 export function sumFromTo(a, z) {
+  if (!Number.isInteger(a) || !Number.isInteger(z)) {
+    return 0;
+  }
+  let sumOfIntegers = 0;
   // TODO
+  for (a; a <= z; a++) {
+    sumOfIntegers += a;
+  }
+  return sumOfIntegers;
 }
 
 /**
@@ -74,6 +111,9 @@ export function sumFromTo(a, z) {
  */
 export function countdown(n) {
   // TODO
+  for (let i = n; i >= 1; i--) {
+    console.log(i);
+  }
 }
 
 /**
@@ -89,6 +129,11 @@ export function countdown(n) {
  */
 export function sumOddsToN(n) {
   // TODO
+  let sumOfOdds = 0;
+  for (let i = 1; i <= n; i++) {
+    if (i % 2 === 1) sumOfOdds += i;
+  }
+  return sumOfOdds;
 }
 
 /**
@@ -108,7 +153,14 @@ export function sumOddsToN(n) {
  * getGrowthTime(5, 78); // 80
  */
 export function getGrowthTime(start, target) {
+  if (start <= 0 || typeof start !== "number") return undefined;
+
   // TODO
+  let totalMin = 0;
+  for (let i = start; i < target; i *= 2) {
+    totalMin += 20;
+  }
+  return totalMin;
 }
 
 /**
@@ -128,7 +180,17 @@ export function getGrowthTime(start, target) {
  * getCompoundTime(30000, 0.04, 50000); // 14
  */
 export function getCompoundTime(start, rate, target) {
+  if (start <= 0 || rate <= 0) {
+    return undefined;
+  }
   // TODO
+  let currentBallance = start;
+  let yearsToTarget;
+  for (yearsToTarget = 0; currentBallance < target; yearsToTarget++) {
+    let thisYearDiv = currentBallance * rate;
+    currentBallance += thisYearDiv;
+  }
+  return yearsToTarget;
 }
 
 /**
@@ -154,7 +216,15 @@ export function getCompoundTime(start, rate, target) {
  * moveWater(7, 3); // 1
  */
 export function moveWater(colander, bucket) {
+  if (colander <= 0) return undefined;
+
   // TODO
+  let trips = 0;
+  for (let cupsInBucket = 0; cupsInBucket < bucket; colander--) {
+    cupsInBucket += Math.max(colander, 1);
+    trips += 1;
+  }
+  return trips;
 }
 
 /**
@@ -175,4 +245,16 @@ export function moveWater(colander, bucket) {
  */
 export function fizzbuzz(n) {
   // TODO
+
+  for (let i = 1; i <= n; i++) {
+    if (i % 3 === 0 && i % 5 === 0) {
+      console.log("fizzbuzz");
+    } else if (i % 3 === 0) {
+      console.log("fizz");
+    } else if (i % 5 === 0) {
+      console.log("buzz");
+    } else {
+      console.log(i);
+    }
+  }
 }
